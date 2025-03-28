@@ -1,0 +1,19 @@
+fn instnetsurf {
+	tmpenter
+	
+	log 'clone netsurf...'
+	logwrap git/clone https://github.com/netsurf-plan9/nsport.git
+	cd nsport
+
+	log 'fetch dependencies...'
+	logwrap fetch clone http
+
+	log 'build...'
+	logwrap mk
+
+	log 'install...'
+	logwrap mk install
+
+	log 'finished'
+	tmpleave
+}

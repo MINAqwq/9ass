@@ -1,0 +1,16 @@
+fn _treason_unpack {
+	hget https://ftrv.se/_/treason.gz | gunzip | disk/mkext -d .
+}
+
+fn insttreason {	
+	tmpenter
+
+	log 'downloading treason...'
+	logwrap _treason_unpack
+
+	log 'installing treason...'
+	./treason/install.rc
+	
+	log 'treason finished'
+	tmpleave
+}

@@ -1,0 +1,21 @@
+#!/bin/rc
+rfork en
+
+. 'lib.rc'
+
+# 9ASS
+# 9front > Automatic System Setup
+# for terminal disk systems :)
+
+. 'installer/netsurf.rc'
+. 'installer/treason.rc'
+
+log 'starting...'
+
+a1=$1
+
+condinstall netsurf
+condinstall treason
+
+
+log 'script finished!'

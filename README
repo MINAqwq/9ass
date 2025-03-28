@@ -1,0 +1,13 @@
+I made these scripts to install software i frequently use on plan9.
+
+Usage:
+./9ASS [name | all]
+
+if you run it without argument it will search the binaries in your
+system and install only what it missing.
+
+"All" as argument will refetch and install everything.
+
+Software:
+- netsurf | webbrowser
+- treason | video player

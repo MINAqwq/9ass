@@ -1,0 +1,51 @@
+tmp_path=/tmp/__9ass__
+log_path=/tmp/9ass.log
+
+# echo with cool prefix
+fn log {
+	echo '[9ASS]' $*
+}
+
+# redirect command output to log file
+# and refer to logfile on error LMAO
+fn logwrap {
+	$* >> $log_path >>[2=1] || fatal see $log_path for details
+}
+
+# conditional install
+#
+# execute install script if all is set, $2 is it's name
+# or if nothing is specified and it's not in the system
+fn condinstall {
+	if (~ $a1 all $1 || if(test ! -x /bin/$1 && test -z a1)) {
+		inst$1
+	}
+}
+
+# call on fatal error
+fn fatal {
+	if (test -n $tmp_lastdir) {
+		tmpleave
+	}
+
+	echo '[ERROR]' $*
+	exit
+}
+
+# enter tmp directory and save the current directory
+# arg1: script namespace
+fn tmpenter {
+	tmp_lastdir=`{pwd}
+
+	mkdir -p $tmp_path
+	cd $tmp_path
+}
+
+
+# leave and remove tmp dir and change back to lastdir
+fn tmpleave {
+	cd $tmp_lastdir
+	rm -r $tmp_path
+
+	tmp_lastdir=''
+}
