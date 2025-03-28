@@ -4,7 +4,7 @@ Usage:
 ./9ASS [name | all]
 
 if you run it without argument it will search the binaries in your
-system and install only what it missing.
+system and install only what is missing.
 
 "All" as argument will refetch and install everything.
 
